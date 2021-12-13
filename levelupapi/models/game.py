@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Game(models.Model):
-
-    type = models.OneToOneField(max_length=55)
+    
+    gametype = models.ForeignKey("levelupapi.GameType", on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
+    
