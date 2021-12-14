@@ -2,9 +2,9 @@ from django.db import models
 
 class Event(models.Model):
 
-    name = models.CharField(max_length=55)
-    gamer = models.ForeignKey("levelupapi.Gamer", on_delete=models.CASCADE)
+    title = models.CharField(max_length=55)
     game = models.ForeignKey("levelupapi.Game", on_delete=models.CASCADE)
-    date = models.DateTimeField(max_length=50)
-    time = models.TimeField(max_length=50)
+    gamer = models.ForeignKey("levelupapi.Gamer", on_delete=models.CASCADE, related_name="events")
     location = models.CharField(max_length=50)
+    date = models.DateTimeField(max_length=10)
+    time = models.TimeField(auto_now_add=True)

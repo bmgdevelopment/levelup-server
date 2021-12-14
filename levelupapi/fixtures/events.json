@@ -1,0 +1,14 @@
+[
+    {
+        "model": "levelupapi.event",
+        "pk": 1,
+        "fields": {
+            "title": "Level Up Kick Off Party",
+            "game": 2, 
+            "gamer": 1,
+            "location": "Nashville Events Room", 
+            "date": "2021-12-21T14:51:39.989Z",
+            "time": "14:51:39.989"
+            }
+    }
+]

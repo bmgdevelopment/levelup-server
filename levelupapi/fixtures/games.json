@@ -1,0 +1,18 @@
+[
+    {
+        "model": "levelupapi.game",
+        "pk": 1,
+        "fields": {
+            "gametype": 1,
+            "name": "Monopoly"
+        }
+    },
+    {
+        "model": "levelupapi.game",
+        "pk": 2,
+        "fields": {
+            "gametype": 2,
+            "name": "Gin Rummy"
+        }
+    }
+]
