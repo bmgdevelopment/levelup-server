@@ -9,6 +9,7 @@ from levelupapi.models import Gamer
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
+
 def login_user(request):
     '''Handles the authentication of a gamer
 
@@ -37,6 +38,7 @@ def login_user(request):
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
+
 def register_user(request):
     '''Handles the creation of a new gamer for authentication
 
