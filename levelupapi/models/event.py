@@ -6,7 +6,7 @@ class Event(models.Model):
     description = models.CharField(max_length=150, default='Game info here')
     game = models.ForeignKey("levelupapi.Game", on_delete=models.CASCADE)
     date = models.DateTimeField(max_length=10)
-    time = models.TimeField(auto_now_add=True)
+    time = models.TimeField(auto_now_add=False)
     
     
     # title = models.CharField(max_length=55)
