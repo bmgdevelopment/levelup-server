@@ -156,7 +156,7 @@ class EventSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Event
-        fields = ('id', 'game', 'gamer', 'organizer',
+        fields = ('id', 'game', 'gamer',
           'description', 'date', 'time', 'attendees',
           'joined')
         # fields = ('id', 'game', 'gamer',
