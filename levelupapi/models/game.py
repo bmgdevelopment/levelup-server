@@ -15,4 +15,3 @@ class Game(models.Model):
     game_type = models.ForeignKey("levelupapi.GameType", on_delete=models.CASCADE)
     number_of_players = models.IntegerField(default=2)
     skill_level = models.IntegerField(choices=Skill.choices, default=1)
-

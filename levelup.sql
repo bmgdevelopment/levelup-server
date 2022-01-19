@@ -18,3 +18,7 @@ SELECT g.id,
     g.gametype_id,
     g.name
 FROM levelupapi_game g
+
+UPDATE levelupapi_event
+SET time = "5:00:00"
+WHERE id = 6

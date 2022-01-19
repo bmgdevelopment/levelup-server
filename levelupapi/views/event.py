@@ -1,5 +1,4 @@
 """View module for handling requests about events"""
-from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseServerError
 from rest_framework import status
@@ -8,8 +7,10 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from levelupapi.models import Game, Event, Gamer
-from levelupapi.views.game import GameSerializer
 
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class EventView(ViewSet):
     """Level up events"""
@@ -135,8 +136,10 @@ class EventView(ViewSet):
         # A gamer wants to sign up for an event
         if request.method == "POST":
             try:
-                # Using the attendees field on the event makes it simple to add a gamer to the event
-                # .add(gamer) will insert into the join table a new row the gamer_id and the event_id
+                # Using the attendees field on the event makes it 
+                # simple to add a gamer to the event
+                # .add(gamer) will insert into the join table
+                # a new row the gamer_id and the event_id
                 event.attendees.add(gamer)
                 return Response({}, status=status.HTTP_201_CREATED)
             except Exception as ex:
@@ -187,7 +190,12 @@ class EventGamerSerializer(serializers.ModelSerializer):
         model = Gamer
         fields = ['user']
 
-
+class GameSerializer(serializers.ModelSerializer):
+    """JSON serializer for games"""
+    class Meta:
+        model = Game
+        fields = ('id', 'title', 'maker', 'number_of_players', 'skill_level')
+    
 class EventSerializer(serializers.ModelSerializer):
     """JSON serializer for events"""
     gamer = EventGamerSerializer(many=False)
@@ -200,10 +208,3 @@ class EventSerializer(serializers.ModelSerializer):
           'joined')
         # fields = ('id', 'game', 'gamer',
         #           'description', 'date', 'time')
-
-class GameSerializer(serializers.ModelSerializer):
-    """JSON serializer for games"""
-    class Meta:
-        model = Game
-        fields = ('id', 'title', 'maker', 'number_of_players', 'skill_level')
-
