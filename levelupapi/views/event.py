@@ -7,7 +7,6 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from levelupapi.models import Game, Event, Gamer
-
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -156,24 +155,6 @@ class EventView(ViewSet):
                 return Response(None, status=status.HTTP_204_NO_CONTENT)
             except Exception as ex:
                 return Response({'message': ex.args[0]})
-
-    # def list(self, request):
-    #     """Handle GET requests to events resource
-
-    #     Returns:
-    #         Response -- JSON serialized list of events
-    #     """
-    #     events = Event.objects.all()
-
-    #     # Support filtering events by game
-    #     game = self.request.query_params.get('gameId', None)
-    #     if game is not None:
-    #         events = events.filter(game__id=game)
-
-    #     serializer = EventSerializer(
-    #         events, many=True, context={'request': request})
-    #     return Response(serializer.data)
-
 
 class EventUserSerializer(serializers.ModelSerializer):
     """JSON serializer for event gamer's related Django user"""
